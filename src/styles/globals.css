@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --primary: #3b82f6;
-  --secondary: #1f2937;
-  --accent: #60a5fa;
-  --muted: #374151;
+  --background: #0d1117;    /* Deep charcoal, easy on the eyes */
+  --foreground: #e6edf3;    /* Soft white, great contrast */
+  --primary:   #0a60c3;     /* Vibrant blue (great for CTAs & links) */
+  --secondary: #161b22;     /* Slightly lighter background for cards/nav */
+  --accent:    #3fb950;     /* Green for highlights, buttons, success */
+  --muted:     #8b949e;     /* Muted text, placeholder, borders */
 }
+
 
 body {
   background-color: var(--background);

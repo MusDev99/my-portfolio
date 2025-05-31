@@ -5,9 +5,13 @@ export default function About() {
         <h2 className="text-3xl font-bold mb-8 text-center">About Me</h2>
         <div className="card max-w-3xl mx-auto">
           <p className="text-gray-300 leading-relaxed">
-            I am a passionate software engineer with expertise in building scalable web applications
-            and solving complex problems. With a strong foundation in modern technologies and
-            best practices, I create efficient and user-friendly solutions.
+            I'm a Software Engineer at AirAsia, specializing in backend development and cloud solutions. 
+            My work focuses on building and maintaining Python and Node.js applications in Google Cloud Platform, 
+            with a strong emphasis on creating scalable and reliable systems.
+          </p>
+          <p className="text-gray-300 leading-relaxed mt-4">
+            I'm passionate about writing clean code, implementing efficient solutions, and continuously learning 
+            new technologies to deliver the best possible results.
           </p>
         </div>
       </div>

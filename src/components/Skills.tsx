@@ -6,7 +6,7 @@ const skills = [
   'Python',
   'SQL',
   'Git',
-  'AWS'
+  'GCP'
 ]
 
 export default function Skills() {
