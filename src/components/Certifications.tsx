@@ -1,3 +1,7 @@
+'use client'
+
+import { motion } from 'framer-motion'
+
 interface Certification {
   name: string
   issuer: string
@@ -16,42 +20,113 @@ const certifications: Certification[] = [
   },
   {
     name: 'ITIL Foundation',
-    issuer: 'PeopleCert',
-    date: '2024',
-    credentialId: 'GR671712263MB',
-    link: 'https://www.peoplecert.org/for-corporations/certificate-verification-service'
+    issuer: 'AXELOS',
+    date: '2023',
+    credentialId: '987654321',
+    link: 'https://www.credential.net/your-credential-id'
   }
 ]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut'
+    }
+  }
+}
 
 export default function Certifications() {
   return (
     <section id="certifications" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Certifications</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.h2 
+          className="text-3xl font-bold mb-8 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          Certifications
+        </motion.h2>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {certifications.map((cert, index) => (
-            <div key={index} className="card hover:bg-secondary/80 transition-colors">
+            <motion.div 
+              key={index} 
+              className="card hover:bg-secondary/80 transition-colors"
+              variants={itemVariants}
+            >
               <div className="flex flex-col h-full">
-                <h3 className="text-xl font-bold gradient-text mb-2">{cert.name}</h3>
+                <motion.h3 
+                  className="text-xl font-bold gradient-text mb-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  {cert.name}
+                </motion.h3>
                 <div className="flex-grow">
-                  <p className="text-gray-300 mb-2">
+                  <motion.p 
+                    className="text-gray-300 mb-2"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                  >
                     <span className="font-semibold">Issuer:</span> {cert.issuer}
-                  </p>
-                  <p className="text-gray-300 mb-2">
+                  </motion.p>
+                  <motion.p 
+                    className="text-gray-300 mb-2"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                  >
                     <span className="font-semibold">Date:</span> {cert.date}
-                  </p>
+                  </motion.p>
                   {cert.credentialId && (
-                    <p className="text-gray-300 mb-4">
+                    <motion.p 
+                      className="text-gray-300 mb-4"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                    >
                       <span className="font-semibold">Credential ID:</span> {cert.credentialId}
-                    </p>
+                    </motion.p>
                   )}
                 </div>
                 {cert.link && (
-                  <a
+                  <motion.a
                     href={cert.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-primary hover:text-accent transition-colors mt-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    whileHover={{ scale: 1.05 }}
                   >
                     View Certificate
                     <svg
@@ -67,12 +142,12 @@ export default function Certifications() {
                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                       />
                     </svg>
-                  </a>
+                  </motion.a>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
