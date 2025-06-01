@@ -1,43 +1,92 @@
+import Image from 'next/image'
+import { FaGithub } from 'react-icons/fa'
+
 interface Project {
   title: string
   description: string
   technologies: string[]
+  githubLink?: string
+  imageUrl?: string
+  gradient: string
 }
 
 const projects: Project[] = [
   {
-    title: 'Project One',
-    description: 'A brief description of the project and its key features.',
-    technologies: ['React', 'Node.js']
+    title: 'E-Commerce Platform',
+    description: 'A full-stack e-commerce platform with real-time inventory management, payment integration, and admin dashboard.',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+    githubLink: 'https://github.com/yourusername/ecommerce-platform',
+    imageUrl: '/images/projects/ecommerce.jpg',
+    gradient: 'from-purple-500 to-pink-500'
   },
   {
-    title: 'Project Two',
-    description: 'Another impressive project showcasing different technologies.',
-    technologies: ['Next.js', 'TypeScript']
+    title: 'Task Management App',
+    description: 'A collaborative task management application with real-time updates, team features, and progress tracking.',
+    technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
+    githubLink: 'https://github.com/yourusername/task-manager',
+    imageUrl: '/images/projects/task-manager.jpg',
+    gradient: 'from-blue-500 to-cyan-500'
   },
   {
-    title: 'Project Three',
-    description: 'A third project demonstrating versatility and technical skills.',
-    technologies: ['Python', 'Django']
+    title: 'AI Content Generator',
+    description: 'An AI-powered content generation tool that helps create engaging blog posts and social media content.',
+    technologies: ['Python', 'Django', 'OpenAI API', 'React'],
+    imageUrl: '/images/projects/ai-content.jpg',
+    gradient: 'from-green-500 to-emerald-500'
   }
 ]
 
-export default function Projects() {
+const Projects = () => {
   return (
     <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Featured Projects
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="card">
-              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-              <p className="text-gray-300 mb-4">{project.description}</p>
-              <div className="flex space-x-2">
-                {project.technologies.map((tech, techIndex) => (
-                  <span key={techIndex} className="px-2 py-1 bg-muted rounded text-sm">
-                    {tech}
-                  </span>
-                ))}
+            <div 
+              key={index} 
+              className="card group hover:scale-105 transition-all duration-300 overflow-hidden"
+            >
+              {project.imageUrl && (
+                <div className="relative h-48 w-full mb-4 overflow-hidden">
+                  <Image
+                    src={project.imageUrl}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-b ${project.gradient} opacity-20`} />
+                </div>
+              )}
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className={`text-xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
+                    {project.title}
+                  </h3>
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      <FaGithub className="w-6 h-6" />
+                    </a>
+                  )}
+                </div>
+                <p className="text-gray-300 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span 
+                      key={techIndex} 
+                      className={`px-3 py-1 rounded-full text-sm bg-gradient-to-r ${project.gradient} bg-opacity-20 text-white`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -45,4 +94,6 @@ export default function Projects() {
       </div>
     </section>
   )
-} 
+}
+
+export default Projects 

@@ -2,7 +2,7 @@
 
 import AnimatedSection from './AnimatedSection'
 
-export default function About() {
+const About = () => {
   return (
     <section id="about" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -20,4 +20,6 @@ export default function About() {
       </div>
     </section>
   )
-} 
+}
+
+export default About 

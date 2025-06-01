@@ -23,7 +23,7 @@ const education: Education = {
   ]
 }
 
-export default function Education() {
+const Education = () => {
   return (
     <section id="education" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -96,4 +96,6 @@ export default function Education() {
       </div>
     </section>
   )
-} 
+}
+
+export default Education 

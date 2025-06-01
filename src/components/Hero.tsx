@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-export default function Hero() {
+const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent z-0"></div>
@@ -69,4 +69,6 @@ export default function Hero() {
       </div>
     </section>
   )
-} 
+}
+
+export default Hero 

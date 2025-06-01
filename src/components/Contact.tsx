@@ -40,7 +40,7 @@ const socialLinks: SocialLink[] = [
   }
 ]
 
-export default function Contact() {
+const Contact = () => {
   return (
     <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -117,4 +117,6 @@ export default function Contact() {
       </div>
     </section>
   )
-} 
+}
+
+export default Contact 

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Navbar() {
+const Navbar = () => {
   return (
     <nav className="fixed w-full bg-secondary/80 backdrop-blur-sm z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,4 +23,6 @@ export default function Navbar() {
       </div>
     </nav>
   )
-} 
+}
+
+export default Navbar 

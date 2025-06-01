@@ -8,7 +8,7 @@ interface AnimatedSectionProps {
   className?: string
 }
 
-export default function AnimatedSection({ children, className = '' }: AnimatedSectionProps) {
+const AnimatedSection = ({ children, className = '' }: AnimatedSectionProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -20,4 +20,6 @@ export default function AnimatedSection({ children, className = '' }: AnimatedSe
       {children}
     </motion.div>
   )
-} 
+}
+
+export default AnimatedSection 

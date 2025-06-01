@@ -49,7 +49,7 @@ const itemVariants = {
   }
 }
 
-export default function Certifications() {
+const Certifications = () => {
   return (
     <section id="certifications" className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -151,4 +151,6 @@ export default function Certifications() {
       </div>
     </section>
   )
-} 
+}
+
+export default Certifications 
