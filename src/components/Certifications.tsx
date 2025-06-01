@@ -11,13 +11,13 @@ interface Certification {
 }
 
 const certifications: Certification[] = [
-  {
-    name: 'Google Cloud Professional Cloud Developer',
-    issuer: 'Google Cloud',
-    date: '2023',
-    credentialId: '123456789',
-    link: 'https://www.credential.net/your-credential-id'
-  },
+  // {
+  //   name: 'Google Cloud Professional Cloud Developer',
+  //   issuer: 'Google Cloud',
+  //   date: '2023',
+  //   credentialId: '123456789',
+  //   link: 'https://www.credential.net/your-credential-id'
+  // },
   {
     name: 'ITIL Foundation',
     issuer: 'AXELOS',

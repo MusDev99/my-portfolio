@@ -12,28 +12,28 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce platform with real-time inventory management, payment integration, and admin dashboard.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+    title: 'Tokyo Itinerary',
+    description: 'A web itinerary planner for Tokyo, Japan.',
+    technologies: ['Astro', 'TypeScript', 'Tailwind CSS', 'Preact'],
     githubLink: 'https://github.com/yourusername/ecommerce-platform',
-    imageUrl: '/images/projects/ecommerce.jpg',
+    imageUrl: '/images/tokyo-itinerary.png',
     gradient: 'from-purple-500 to-pink-500'
   },
-  {
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates, team features, and progress tracking.',
-    technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
-    githubLink: 'https://github.com/yourusername/task-manager',
-    imageUrl: '/images/projects/task-manager.jpg',
-    gradient: 'from-blue-500 to-cyan-500'
-  },
-  {
-    title: 'AI Content Generator',
-    description: 'An AI-powered content generation tool that helps create engaging blog posts and social media content.',
-    technologies: ['Python', 'Django', 'OpenAI API', 'React'],
-    imageUrl: '/images/projects/ai-content.jpg',
-    gradient: 'from-green-500 to-emerald-500'
-  }
+  // {
+  //   title: 'Task Management App',
+  //   description: 'A collaborative task management application with real-time updates, team features, and progress tracking.',
+  //   technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
+  //   githubLink: 'https://github.com/yourusername/task-manager',
+  //   imageUrl: '/images/projects/task-manager.jpg',
+  //   gradient: 'from-blue-500 to-cyan-500'
+  // },
+  // {
+  //   title: 'AI Content Generator',
+  //   description: 'An AI-powered content generation tool that helps create engaging blog posts and social media content.',
+  //   technologies: ['Python', 'Django', 'OpenAI API', 'React'],
+  //   imageUrl: '/images/projects/ai-content.jpg',
+  //   gradient: 'from-green-500 to-emerald-500'
+  // }
 ]
 
 const Projects = () => {

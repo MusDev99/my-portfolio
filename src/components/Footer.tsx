@@ -43,7 +43,7 @@ const Footer = () => {
               © {new Date().getFullYear()} Muhammad Mustaqeem. All rights reserved.
             </p>
             <a
-              href="https://github.com/MusDev99/portfolio"
+              href="https://github.com/MusDev99/my-portfolio-next"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
