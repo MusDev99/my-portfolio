@@ -1,4 +1,4 @@
-# Modern Software Engineer Portfolio
+# Modern Software Engineer Portfolio using Next.JS
 
 A modern, responsive portfolio website built with Next.js 14, TypeScript, and Tailwind CSS. This portfolio showcases professional experience, skills, and projects with smooth animations and a beautiful dark theme.
 
