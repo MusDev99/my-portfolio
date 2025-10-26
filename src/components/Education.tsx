@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Education } from '@/types/portfolio'
+import { type Education } from '@/types/portfolio'
 import educationData from '@/data/education.json'
 
 const education: Education = educationData as Education

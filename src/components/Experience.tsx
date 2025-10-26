@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Experience } from '@/types/portfolio'
+import { type Experience } from '@/types/portfolio'
 import experienceData from '@/data/experience.json'
 
 const experiences: Experience[] = experienceData as Experience[]
