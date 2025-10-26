@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       from: 'Portfolio Contact Form <onboarding@resend.dev>', // This should be a domain you have verified with Resend
       to: toEmail,
       subject: `New message from ${name} on your portfolio`,
-      reply_to: email,
+      replyTo: email,
       html: `<p>You have a new message from your portfolio contact form.</p>
              <p><strong>Name:</strong> ${name}</p>
              <p><strong>Email:</strong> ${email}</p>
