@@ -19,6 +19,10 @@ const config: Config = {
     'from-blue-400',
     'from-orange-500',
     'to-red-600',
+    'from-purple-500',
+    'to-purple-700',
+    'from-pink-500',
+    'to-pink-700'
   ],
   theme: {
     extend: {
