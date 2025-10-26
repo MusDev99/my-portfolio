@@ -1,27 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Education } from '@/types/portfolio'
+import educationData from '@/data/education.json'
 
-interface Education {
-  institution: string
-  degree: string
-  field: string
-  duration: string
-  grade?: string
-  achievements?: string[]
-}
-
-const education: Education = {
-  institution: 'Universiti Teknologi MARA (UiTM)',
-  degree: 'Bachelor of Computer Science',
-  field: 'Computer Science',
-  duration: '2018 - 2022',
-  grade: '3.82',
-  achievements: [
-    'Dean\'s List for Academic Excellence',
-    'Final Year Project: Development of an AI-based System'
-  ]
-}
+const education: Education = educationData as Education
 
 const Education = () => {
   return (

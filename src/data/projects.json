@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Tokyo Itinerary",
+    "description": "A comprehensive web itinerary planner for Tokyo, Japan featuring interactive maps, detailed recommendations, and personalized trip planning.",
+    "technologies": ["Astro", "TypeScript", "Tailwind CSS", "Preact"],
+    "projectLink": "https://mus-itinerary.my/",
+    "gradient": "from-purple-500 to-pink-500",
+    "featured": true
+  }
+]

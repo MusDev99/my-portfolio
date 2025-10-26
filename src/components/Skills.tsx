@@ -8,55 +8,26 @@ import {
   SiGit, 
   SiGooglecloud 
 } from 'react-icons/si'
+import { Skill } from '@/types/portfolio'
+import skillsData from '@/data/skills.json'
 
-interface Skill {
-  name: string
-  icon: React.ReactNode
-  color: string
+// Icon mapping
+const iconMap: { [key: string]: React.ReactNode } = {
+  SiJavascript: <SiJavascript className="w-8 h-8" />,
+  SiTypescript: <SiTypescript className="w-8 h-8" />,
+  SiReact: <SiReact className="w-8 h-8" />,
+  SiNodedotjs: <SiNodedotjs className="w-8 h-8" />,
+  SiPython: <SiPython className="w-8 h-8" />,
+  SiPostgresql: <SiPostgresql className="w-8 h-8" />,
+  SiGit: <SiGit className="w-8 h-8" />,
+  SiGooglecloud: <SiGooglecloud className="w-8 h-8" />
 }
 
-const skills: Skill[] = [
-  {
-    name: 'JavaScript',
-    icon: <SiJavascript className="w-8 h-8" />,
-    color: 'from-yellow-400 to-yellow-600'
-  },
-  {
-    name: 'TypeScript',
-    icon: <SiTypescript className="w-8 h-8" />,
-    color: 'from-blue-500 to-blue-700'
-  },
-  {
-    name: 'React',
-    icon: <SiReact className="w-8 h-8" />,
-    color: 'from-cyan-400 to-blue-600'
-  },
-  {
-    name: 'Node.js',
-    icon: <SiNodedotjs className="w-8 h-8" />,
-    color: 'from-green-500 to-green-700'
-  },
-  {
-    name: 'Python',
-    icon: <SiPython className="w-8 h-8" />,
-    color: 'from-blue-500 to-yellow-500'
-  },
-  {
-    name: 'SQL',
-    icon: <SiPostgresql className="w-8 h-8" />,
-    color: 'from-blue-400 to-blue-600'
-  },
-  {
-    name: 'Git',
-    icon: <SiGit className="w-8 h-8" />,
-    color: 'from-orange-500 to-red-600'
-  },
-  {
-    name: 'GCP',
-    icon: <SiGooglecloud className="w-8 h-8" />,
-    color: 'from-blue-400 to-blue-600'
-  }
-]
+// Transform the JSON data to include React components
+const skills: Array<Skill & { icon: React.ReactNode }> = (skillsData as Skill[]).map(skill => ({
+  ...skill,
+  icon: iconMap[skill.iconName] || <div className="w-8 h-8" />
+}))
 
 const Skills = () => {
   return (

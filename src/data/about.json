@@ -1,0 +1,69 @@
+{
+  "skills": [
+    {
+      "icon": "FaCode",
+      "title": "Backend Development",
+      "description": "Building scalable systems and microservices"
+    },
+    {
+      "icon": "FaCloud",
+      "title": "Cloud Solutions",
+      "description": "Implementing DevOps practices and cloud architecture"
+    },
+    {
+      "icon": "FaUsers",
+      "title": "Team Collaboration",
+      "description": "Working with cross-functional teams effectively"
+    },
+    {
+      "icon": "FaRocket",
+      "title": "Innovation",
+      "description": "Creating efficient and maintainable code solutions"
+    }
+  ],
+  "stats": [
+    {
+      "value": "3+",
+      "label": "Years Experience"
+    },
+    {
+      "value": "10+",
+      "label": "Projects Completed"
+    },
+    {
+      "value": "3",
+      "label": "Companies Worked"
+    },
+    {
+      "value": "1",
+      "label": "Cloud Platforms"
+    }
+  ],
+  "socialLinks": [
+    {
+      "icon": "FaWhatsapp",
+      "href": "https://wa.me/+60139004163",
+      "color": "hover:text-green-500"
+    },
+    {
+      "icon": "FaLinkedin",
+      "href": "https://www.linkedin.com/in/muhammad-mustaqeem-mashasan-1b5880215/",
+      "color": "hover:text-blue-500"
+    },
+    {
+      "icon": "FaGithub",
+      "href": "https://github.com/MusDev99",
+      "color": "hover:text-white"
+    },
+    {
+      "icon": "FaInstagram",
+      "href": "https://instagram.com/mustagram.my",
+      "color": "hover:text-pink-500"
+    },
+    {
+      "icon": "FaEnvelope",
+      "href": "mailto:muhd.mustaqeem99@gmail.com",
+      "color": "hover:text-red-500"
+    }
+  ]
+}

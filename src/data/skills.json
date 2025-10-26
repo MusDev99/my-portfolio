@@ -1,0 +1,42 @@
+[
+  {
+    "name": "JavaScript",
+    "iconName": "SiJavascript",
+    "color": "from-yellow-400 to-yellow-600"
+  },
+  {
+    "name": "TypeScript",
+    "iconName": "SiTypescript",
+    "color": "from-blue-500 to-blue-700"
+  },
+  {
+    "name": "React",
+    "iconName": "SiReact",
+    "color": "from-cyan-400 to-blue-600"
+  },
+  {
+    "name": "Node.js",
+    "iconName": "SiNodedotjs",
+    "color": "from-green-500 to-green-700"
+  },
+  {
+    "name": "Python",
+    "iconName": "SiPython",
+    "color": "from-blue-500 to-yellow-500"
+  },
+  {
+    "name": "SQL",
+    "iconName": "SiPostgresql",
+    "color": "from-blue-400 to-blue-600"
+  },
+  {
+    "name": "Git",
+    "iconName": "SiGit",
+    "color": "from-orange-500 to-red-600"
+  },
+  {
+    "name": "GCP",
+    "iconName": "SiGooglecloud",
+    "color": "from-blue-400 to-blue-600"
+  }
+]

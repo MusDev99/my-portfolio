@@ -1,31 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Certification } from '@/types/portfolio'
+import certificationsData from '@/data/certifications.json'
 
-interface Certification {
-  name: string
-  issuer: string
-  date: string
-  credentialId?: string
-  link?: string
-}
-
-const certifications: Certification[] = [
-  // {
-  //   name: 'Google Cloud Professional Cloud Developer',
-  //   issuer: 'Google Cloud',
-  //   date: '2023',
-  //   credentialId: '123456789',
-  //   link: 'https://www.credential.net/your-credential-id'
-  // },
-  {
-    name: 'ITIL Foundation',
-    issuer: 'AXELOS',
-    date: '2023',
-    credentialId: '987654321',
-    link: 'https://www.credential.net/your-credential-id'
-  }
-]
+const certifications: Certification[] = certificationsData as Certification[]
 
 const containerVariants = {
   hidden: { opacity: 0 },

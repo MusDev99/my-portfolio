@@ -1,118 +1,199 @@
-import { FaWhatsapp, FaLinkedin, FaInstagram, FaEnvelope, FaGithub } from 'react-icons/fa'
+'use client'
 
-interface SocialLink {
-  name: string
-  icon: React.ReactNode
-  url: string
-  color: string
+import { motion } from 'framer-motion'
+import { FaWhatsapp, FaLinkedin, FaInstagram, FaEnvelope, FaGithub } from 'react-icons/fa'
+import { ContactData, ContactSocialLink } from '@/types/portfolio'
+import contactData from '@/data/contact.json'
+import { useState } from 'react'
+
+// Icon mapping for social links
+const iconMap: { [key: string]: React.ReactNode } = {
+  FaWhatsapp: <FaWhatsapp className="w-6 h-6" />,
+  FaLinkedin: <FaLinkedin className="w-6 h-6" />,
+  FaGithub: <FaGithub className="w-6 h-6" />,
+  FaInstagram: <FaInstagram className="w-6 h-6" />,
+  FaEnvelope: <FaEnvelope className="w-6 h-6" />
 }
 
-const socialLinks: SocialLink[] = [
-  {
-    name: 'WhatsApp',
-    icon: <FaWhatsapp className="w-6 h-6" />,
-    url: 'https://wa.me/+60139004163',
-    color: 'hover:bg-green-500'
-  },
-  {
-    name: 'LinkedIn',
-    icon: <FaLinkedin className="w-6 h-6" />,
-    url: 'https://www.linkedin.com/in/muhammad-mustaqeem-mashasan-1b5880215/',
-    color: 'hover:bg-blue-600'
-  },
-  {
-    name: 'GitHub',
-    icon: <FaGithub className="w-6 h-6" />,
-    url: 'https://github.com/MusDev99',
-    color: 'hover:bg-gray-700'
-  },
-  {
-    name: 'Instagram',
-    icon: <FaInstagram className="w-6 h-6" />,
-    url: 'https://instagram.com/mustagram.ofc',
-    color: 'hover:bg-pink-600'
-  },
-  {
-    name: 'Email',
-    icon: <FaEnvelope className="w-6 h-6" />,
-    url: 'mailto:muhd.mustaqeem99@gmail.com',
-    color: 'hover:bg-red-500'
-  }
-]
+// Transform the JSON data
+const contact: ContactData = contactData as ContactData
+const socialLinks: Array<ContactSocialLink & { iconComponent: React.ReactNode }> = 
+  contact.socialLinks.map(link => ({
+    ...link,
+    iconComponent: iconMap[link.icon] || <div className="w-6 h-6" />
+  }))
 
 const Contact = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState('') // for success/error messages
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('Sending...');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (response.ok) {
+        setStatus('Message sent successfully!');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        const errorData = await response.json();
+        setStatus(errorData.error || 'Failed to send message.');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('Failed to send message.');
+    }
+  };
+
   return (
-    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/5 to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 gradient-text">
+            Get in Touch
+          </h2>
+          <p className="text-xl text-muted-light max-w-3xl mx-auto">
+            Let's connect and discuss your next project
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="card">
-            <h3 className="text-xl font-bold mb-6 gradient-text">Send me a message</h3>
-            <form className="space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="card p-8"
+          >
+            <h3 className="text-2xl font-bold mb-8 gradient-text">{contact.form.title}</h3>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+                <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
+                  {contact.form.fields.name.label}
+                </label>
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-3 py-2 bg-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                  placeholder={contact.form.fields.name.placeholder}
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
+                  {contact.form.fields.email.label}
+                </label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-3 py-2 bg-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="your.email@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                  placeholder={contact.form.fields.email.placeholder}
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
+                  {contact.form.fields.message.label}
+                </label>
                 <textarea
                   id="message"
-                  rows={4}
-                  className="w-full px-3 py-2 bg-muted rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Your message here..."
+                  rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                  className="w-full px-4 py-3 bg-secondary border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+                  placeholder={contact.form.fields.message.placeholder}
                 ></textarea>
               </div>
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-accent transition-colors"
+                className="w-full px-6 py-4 btn-primary text-lg font-medium"
+                disabled={status === 'Sending...'}
               >
-                Send Message
-              </button>
+                {status === 'Sending...' ? 'Sending...' : contact.form.submitButton}
+              </motion.button>
+              {status && <p className="mt-4 text-center">{status}</p>}
             </form>
-          </div>
+          </motion.div>
 
           {/* Social Links */}
-          <div className="card">
-            <h3 className="text-xl font-bold mb-6 gradient-text">Connect with me</h3>
-            <div className="space-y-6">
-              <p className="text-gray-300">
-                Feel free to reach out to me through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="card p-8"
+          >
+            <h3 className="text-2xl font-bold mb-8 gradient-text">Connect with me</h3>
+            <div className="space-y-8">
+              <p className="text-lg text-muted-light leading-relaxed">
+                {contact.description}
               </p>
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((link) => (
-                  <a
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {socialLinks.map((link, index) => (
+                  <motion.a
                     key={link.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-3 p-4 rounded-lg bg-muted transition-all duration-300 ${link.color}`}
+                    className={`flex items-center gap-4 p-4 rounded-lg bg-secondary border border-border transition-all duration-300 ${link.color} hover:border-primary/50 hover:shadow-lg`}
                   >
-                    {link.icon}
-                    <span className="font-medium">{link.name}</span>
-                  </a>
+                    {link.iconComponent}
+                    <span className="font-medium text-foreground">{link.name}</span>
+                  </motion.a>
                 ))}
               </div>
-              <div className="mt-8 p-4 bg-muted rounded-lg">
-                <h4 className="font-semibold mb-2">Location</h4>
-                <p className="text-gray-300">CyberSouth, Sepang, Malaysia</p>
-              </div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-8 p-6 bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-lg"
+              >
+                <h4 className="font-semibold mb-3 text-foreground flex items-center gap-2">
+                  <span className="w-2 h-2 bg-primary rounded-full"></span>
+                  {contact.location.title}
+                </h4>
+                <p className="text-muted-light">{contact.location.address}</p>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

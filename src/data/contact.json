@@ -1,0 +1,57 @@
+{
+  "socialLinks": [
+    {
+      "name": "WhatsApp",
+      "icon": "FaWhatsapp",
+      "url": "https://wa.me/+60139004163",
+      "color": "hover:bg-green-500"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "FaLinkedin",
+      "url": "https://www.linkedin.com/in/muhammad-mustaqeem-mashasan-1b5880215/",
+      "color": "hover:bg-blue-600"
+    },
+    {
+      "name": "GitHub",
+      "icon": "FaGithub",
+      "url": "https://github.com/MusDev99",
+      "color": "hover:bg-gray-700"
+    },
+    {
+      "name": "Instagram",
+      "icon": "FaInstagram",
+      "url": "https://instagram.com/mustagram.my",
+      "color": "hover:bg-pink-600"
+    },
+    {
+      "name": "Email",
+      "icon": "FaEnvelope",
+      "url": "mailto:muhd.mustaqeem99@gmail.com",
+      "color": "hover:bg-red-500"
+    }
+  ],
+  "location": {
+    "title": "Location",
+    "address": "CyberSouth, Sepang, Malaysia"
+  },
+  "form": {
+    "title": "Send me a message",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "your.email@example.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Your message here..."
+      }
+    },
+    "submitButton": "Send Message"
+  },
+  "description": "Feel free to reach out to me through any of these platforms. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions."
+}
