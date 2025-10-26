@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import { FaGithub } from 'react-icons/fa'
+import { FaEarthAsia } from 'react-icons/fa6'
 
 interface Project {
   title: string
   description: string
   technologies: string[]
-  githubLink?: string
+  projectLink?: string
   imageUrl?: string
   gradient: string
 }
@@ -15,25 +16,9 @@ const projects: Project[] = [
     title: 'Tokyo Itinerary',
     description: 'A web itinerary planner for Tokyo, Japan.',
     technologies: ['Astro', 'TypeScript', 'Tailwind CSS', 'Preact'],
-    githubLink: 'https://github.com/yourusername/ecommerce-platform',
-    imageUrl: '/images/tokyo-itinerary.png',
+    projectLink: 'https://mus-itinerary.my/',
     gradient: 'from-purple-500 to-pink-500'
-  },
-  // {
-  //   title: 'Task Management App',
-  //   description: 'A collaborative task management application with real-time updates, team features, and progress tracking.',
-  //   technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
-  //   githubLink: 'https://github.com/yourusername/task-manager',
-  //   imageUrl: '/images/projects/task-manager.jpg',
-  //   gradient: 'from-blue-500 to-cyan-500'
-  // },
-  // {
-  //   title: 'AI Content Generator',
-  //   description: 'An AI-powered content generation tool that helps create engaging blog posts and social media content.',
-  //   technologies: ['Python', 'Django', 'OpenAI API', 'React'],
-  //   imageUrl: '/images/projects/ai-content.jpg',
-  //   gradient: 'from-green-500 to-emerald-500'
-  // }
+  }
 ]
 
 const Projects = () => {
@@ -51,12 +36,6 @@ const Projects = () => {
             >
               {project.imageUrl && (
                 <div className="relative h-48 w-full mb-4 overflow-hidden">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
                   <div className={`absolute inset-0 bg-gradient-to-b ${project.gradient} opacity-20`} />
                 </div>
               )}
@@ -65,14 +44,14 @@ const Projects = () => {
                   <h3 className={`text-xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
                     {project.title}
                   </h3>
-                  {project.githubLink && (
+                  {project.projectLink && (
                     <a
-                      href={project.githubLink}
+                      href={project.projectLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white transition-colors"
                     >
-                      <FaGithub className="w-6 h-6" />
+                      <FaEarthAsia className="w-6 h-6" />
                     </a>
                   )}
                 </div>
